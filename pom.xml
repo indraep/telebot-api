@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.indraep.telebot</groupId>
+    <artifactId>telebot-api</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>telebot-api-app</module>
+        <module>telebot-api-rest</module>
+        <module>telebot-api-client</module>
+        <module>telebot-api-client-model</module>
+        <module>telebot-api-properties</module>
+        <module>telebot-api-helpers</module>
+        <module>telebot-api-helpers-impl</module>
+    </modules>
+
+    <!-- Set parent project -->
+    <parent>
+        <groupId>com.blibli.oss</groupId>
+        <artifactId>blibli-backend-framework</artifactId>
+        <version>0.0.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <blibli-framework.version>0.0.4</blibli-framework.version>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <telebot-sdk.version>1.1.0-SNAPSHOT</telebot-sdk.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Self Modules -->
+            <dependency>
+                <groupId>com.indraep.telebot</groupId>
+                <artifactId>telebot-api-rest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.indraep.telebot</groupId>
+                <artifactId>telebot-api-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.indraep.telebot</groupId>
+                <artifactId>telebot-api-client-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.indraep.telebot</groupId>
+                <artifactId>telebot-api-properties</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.indraep.telebot</groupId>
+                <artifactId>telebot-api-helpers</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.indraep.telebot</groupId>
+                <artifactId>telebot-api-helpers-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.indraep.tele</groupId>
+                <artifactId>telebot-client-sdk</artifactId>
+                <version>${telebot-sdk.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.blibli.oss</groupId>
+            <artifactId>blibli-backend-framework-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.blibli.oss</groupId>
+            <artifactId>blibli-backend-framework-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- add blibli bintray repository -->
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-bliblidotcom-maven</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/bliblidotcom/maven</url>
+        </repository>
+        <repository>
+            <id>in-project</id>
+            <name>In Project Repo</name>
+            <url>file://${user.dir}/libs</url>
+        </repository>
+    </repositories>
+
+</project>
